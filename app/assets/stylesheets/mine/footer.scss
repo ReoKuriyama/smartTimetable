@@ -1,0 +1,21 @@
+footer {
+  width: 100vw;
+  height: 35px;
+  background-color: #FAFAFA;
+  position: absolute;
+  bottom: 0;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.6));
+    ul{
+      li{
+        width: 25vw;
+        height: 35px;
+        float: left;
+        text-align: center;
+        .fa{
+          font-size: 23px;
+          margin: 6px 0;
+          color: #707070;
+        }
+      }
+    }
+}
