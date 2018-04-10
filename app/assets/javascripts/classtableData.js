@@ -28,11 +28,17 @@ $(function(){
 
   //授業名、教授名の連携
   $('table').on('click', 'tbody td', function(){
-    var id = $(this).attr("id")
-    var class_name = $(this).find(".td__class_name").text()
-    var professor_name = $(this).find(".td__class_name").data("professorName")
-    $(".class-name").text(class_name)
-    $(".professor-name").text(professor_name + "君")
-
+    if ($(this).children("p")[0]){
+      //border調整
+      $('tbody td').css("border", "none")
+      $(this).css("border", "0.5px solid #FAFAFA")
+      //クリックされた時間割のデータ取得
+      var class_name = $(this).find(".td__class_name").text()
+      var id = $(this).attr("id")
+      var professor_name = $(this).find(".td__class_name").data("professorName")
+      //取得したデータに基づいてテキスト変更
+      $(".class-name").text(class_name)
+      $(".professor-name").text(professor_name + "君")
+    }
   });
 });
