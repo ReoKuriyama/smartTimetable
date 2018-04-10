@@ -1,13 +1,16 @@
 class HomesController < ApplicationController
   def index
-    @arr =[
-      ["11", "経済学", "523", "グレーヴァ香子"],
-      ["43", "財政社会学", "245", "慶応太郎"],
-      ["24", "経済学", "123", "福沢諭吉"],
-      ["55", "ミクロ", "412", "藤沢康成"]
-
-      ];
-  # 配列をJsonへ変換する
+    timetables = SchoolTimetable.all
+    @arr = []
+    timetables.each do |timetable|
+      @time_arr = []
+      @time_arr << timetable.class_time
+      @time_arr << timetable.class_name
+      @time_arr << timetable.class_room
+      @time_arr << timetable.professor_name
+      @arr << @time_arr
+    end
+    # 配列をJsonへ変換する
     @arr_json = @arr.to_json.html_safe
   end
 end
