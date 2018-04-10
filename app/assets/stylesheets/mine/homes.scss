@@ -29,8 +29,11 @@
       }
     }
     tbody {
-      th{
-        font-size: 1.4rem;
+      tr {
+        height: calc(100% / 6);
+        th{
+          font-size: 1.4rem;
+        }
       }
     }
   }
