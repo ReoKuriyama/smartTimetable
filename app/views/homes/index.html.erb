@@ -1,41 +1,44 @@
-<div id="timeTable">
-  <table>
-    <thead>
-      <tr>
-        <th class="margin"></th>
-              <th>月</th>
-              <th>火</th>
-              <th>水</th>
-              <th>木</th>
-              <th>金</th>
-              <th>土</th>
-          </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-  <%= image_tag("svg/shareButton.svg", class: "share-button") %>
-</div>
-<div class="class-information">
-  <div class="class-information__text">
-    <div class="wrapper">
-      <p class="class-name">
-        授業を選択してください
-      </p>
-      <p class="professor-name">
-      </p>
+<div class="main-content">
+  <div id="timeTable">
+    <table>
+      <thead>
+        <tr>
+          <th class="margin"></th>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th>土</th>
+            </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <%= image_tag("svg/shareButton.svg", class: "share-button") %>
+  </div>
+  <div class="class-information">
+    <div class="class-information__text">
+      <div class="wrapper">
+        <p class="class-name">
+        </p>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <p class="professor-name">
+        </p>
+      </div>
+    </div>
+      <div class="share-image">
+        <%= image_tag("user1-1.png") %>
+        <%= image_tag("user1-1.png") %>
+        <%= image_tag("user1-1.png") %>
+        <%= image_tag("user1-1.png") %>
+        <%= image_tag("user1-1.png") %>
+        <%= image_tag("user1-1.png") %>
+        <%= image_tag("user1-1.png") %>
+        <%= image_tag("user1-1.png") %>
+        <%= image_tag("user1-1.png") %>
     </div>
   </div>
-    <div class="share-image">
-      <%= image_tag("user1-1.png") %>
-      <%= image_tag("user1-1.png") %>
-      <%= image_tag("user1-1.png") %>
-      <%= image_tag("user1-1.png") %>
-      <%= image_tag("user1-1.png") %>
-      <%= image_tag("user1-1.png") %>
-      <%= image_tag("user1-1.png") %>
-      <%= image_tag("user1-1.png") %>
-      <%= image_tag("user1-1.png") %>
-  </div>
+  <input class='arr_json' name="arr_json" type="hidden" value=<%= @arr_json %>
 </div>
-<input class='arr_json' name="arr_json" type="hidden" value=<%= @arr_json %>>
+<%= render 'homes/footer' %>
