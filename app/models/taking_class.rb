@@ -1,4 +1,4 @@
 class TakingClass < ApplicationRecord
-  belongs_to :users
-  belongs_to :school_timetables
+  belongs_to :user
+  belongs_to :school_timetable
 end
