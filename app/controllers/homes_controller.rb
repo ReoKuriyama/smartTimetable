@@ -19,7 +19,7 @@ class HomesController < ApplicationController
   def user_has_timetable?
     @@timetables = current_user.school_timetables
     if @@timetables.empty?
-      redirect_to scraping_path
+      redirect_to edit_user_path(current_user)
     end
   end
 end
