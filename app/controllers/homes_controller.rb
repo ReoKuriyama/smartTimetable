@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def index
-    timetables = SchoolTimetable.all
+    timetables = current_user.school_timetables
     @arr = []
     timetables.each do |timetable|
       @time_arr = []
