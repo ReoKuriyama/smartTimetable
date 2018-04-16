@@ -1,11 +1,11 @@
 <div id ="session_wrap" class="full">
   <div id="session_new">
-    <h2>Log in</h2>
+    <!-- <h2>STEP 1</h2> -->
     <%= link_to  user_facebook_omniauth_authorize_path  do %>
-      <%= image_tag("svg/F_icon.svg", class: "f_icon") %>
+      <%= image_tag("login-with-facebook-btn.png", class: "f_icon") %>
     <% end %>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <!-- <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true %>
@@ -14,7 +14,7 @@
       <div class="field">
         <%= f.label :password %><br />
         <%= f.password_field :password, autocomplete: "off" %>
-      </div>
+      </div> -->
 
       <!-- <% if devise_mapping.rememberable? -%>
         <div class="field">
