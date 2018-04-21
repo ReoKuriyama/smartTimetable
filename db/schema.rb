@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414091027) do
+ActiveRecord::Schema.define(version: 20180420072929) do
 
   create_table "school_timetables", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "class_time",     limit: 1, null: false
     t.string   "class_name",               null: false
-    t.integer  "class_room",               null: false
+    t.string   "class_room",               null: false
     t.string   "professor_name",           null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "class_type",               null: false
   end
 
   create_table "taking_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
