@@ -26,7 +26,7 @@ $(function(){
     $(id_number).append(`<p class="td__class_name" data-professor-name="${v[3]} ">${v[1]}</p>` + `<p>${v[2]}</p>`);
   });
 
-  //授業名、教授名の連携
+  // 授業名、教授名の連携
   $('table').on('click', 'tbody td', function(){
     if ($(this).children("p")[0]){
       //border調整
@@ -38,7 +38,7 @@ $(function(){
       var professor_name = $(this).find(".td__class_name").data("professorName")
       //取得したデータに基づいてテキスト変更
       $(".class-name").text(class_name)
-      $(".professor-name").text(professor_name + "君")
+      $(".professor-name").text(professor_name)
     }
   });
 });
