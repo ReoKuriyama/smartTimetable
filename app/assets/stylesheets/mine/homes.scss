@@ -9,7 +9,7 @@
     // background: linear-gradient(to bottom, #410094, 65%, rgba(212, 32, 55 ,0.6));
   table {
     width: 100%;
-    height: calc(100%  / 25 * 22);
+    height: 55vh;
     color: white;
     text-align: center;
     th {
@@ -20,6 +20,8 @@
         font-size: 1.1rem;
       }
     thead {
+      width: 100vw;
+      height: 30px;
       th {
         width: calc((100vw - 30px)  / 6 );
         height: 30px;
@@ -29,10 +31,21 @@
       }
     }
     tbody {
+      height: calc(100% - 30px);
       tr {
         height: calc(100% / 6);
-        th{
+        th {
+          width: 30px;
+          height: calc(100% / 6);
           font-size: 1.4rem;
+        }
+        td {
+          padding: 5px;
+           p{
+            width: calc(((100vw - 30px) / 6) - 10px);
+            height:50%;
+            @include over-text(clip);
+          }
         }
       }
     }
@@ -54,11 +67,14 @@
     .class-name {
       font-size: 1.9rem;
       font-weight: bold;
+      width: calc(100vw - 40px);
+      @include over-text(ellipsis);
     }
     .professor-name {
       font-size: 1.5rem;
       color: #666666;
       margin-top: 5px;
+      @include over-text(ellipsis);
     }
   }
   .share-image {
