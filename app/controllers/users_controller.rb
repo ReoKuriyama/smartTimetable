@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       email = @user.email
       password = params[:user][:password]
-      Scraping.get_classes(email, password)
+      Scraping.get_classes(email, password, current_user.id)
       redirect_to root_path
     else
       render :edit

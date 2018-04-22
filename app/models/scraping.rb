@@ -5,7 +5,7 @@ require 'capybara/poltergeist'
 # session.save_screenshot 'screenshot.png'
 
 class Scraping
-  def self.get_classes(email, password)
+  def self.get_classes(email, password, user_id)
     # poltergist setting
     Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(app, {:js_errors => false, :timeout => 1000 })
@@ -45,32 +45,48 @@ class Scraping
     spring_subjects = doc.search('/html/body/center/table[2]').search('.calendar')
     autumn_subjects = doc.search('/html/body/center/table[3]').search('.calendar')
 
+    save_classes(spring_subjects, 0, user_id)
+    save_classes(autumn_subjects, 1, user_id)
+    session.driver.quit
+  end
+
+  def self.save_classes(subjects, type, user_id)
     # カラム名生成のため変数
     n = 11
     s = 1
     start = 11
-    autumn_subjects.each do |subject|
+    subjects.each do |subject|
       unless subject.inner_text.blank?
-        timetable = SchoolTimetable.new
         array = []
         subject.inner_text.each_line { |line| array << line.delete(' ') }
-        timetable.class_time = n
-        timetable.class_name = array[1]
-        timetable.class_room = subject.search('.room').inner_text.gsub('教室', '')
-        timetable.professor_name = array[2]
-        timetable.class_type = 1
-        timetable.save
+        class_name = array[1]
+
+        timetable = SchoolTimetable.where(class_name: class_name)
+        if timetable.blank?
+          SchoolTimetable.create(
+            class_name: class_name,
+            class_time: n,
+            class_room: subject.search('.room').inner_text.gsub('教室', ''),
+            professor_name: array[2],
+            class_type: type,
+            user_ids: [user_id]
+          )
+        else
+          TakingClass.create(
+            user_id: user_id,
+            school_timetable_id: timetable[0].id
+          )
+        end
       end
 
-        if s == 6
-          start += 10
-          n = start
-          s = 1
-        else
-          n += 1
-          s += 1
-        end
+      if s == 6
+        start += 10
+        n = start
+        s = 1
+      else
+        n += 1
+        s += 1
+      end
     end
-    session.driver.quit
   end
 end
