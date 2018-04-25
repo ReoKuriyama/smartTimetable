@@ -61,10 +61,10 @@ $(function(){
       $('tbody td').empty();
       if (switchNumber %2 == 0) {
         insertTdData('spring');
-        $(this).text('春')
+        $(this).text('春').css('color', '#f0c0f5')
       } else {
       insertTdData('autumn');
-      $(this).text('秋')
+      $(this).text('秋').css('color', '#e6ae7b')
     }
     })
 });
