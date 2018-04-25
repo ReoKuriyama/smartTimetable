@@ -13,7 +13,6 @@ class HomesController < ApplicationController
 
   def user_has_timetable?
     timetables = current_user.taking_classes.first
-    binding.pry
-    redirect_to edit_user_path(current_user) if timetables.empty?
+    redirect_to edit_user_path(current_user) if timetables.nil?
   end
 end
