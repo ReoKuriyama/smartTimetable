@@ -10,3 +10,9 @@
   bottom: 0;
   left: 0;
 }
+
+@mixin over-text ($type){
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $type
+}
