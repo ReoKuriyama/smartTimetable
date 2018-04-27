@@ -25,7 +25,7 @@ class Scraping
 
     # when login failed
     if session.current_url != 'https://portal.keio.jp/koid/'
-      session.driver.quit 
+      session.driver.quit
       return false
     end
 
