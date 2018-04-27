@@ -51,4 +51,5 @@ production:
   <<: *default
   database: smartTimetable_production
   username: smartTimetable
-  password: <%= ENV['SMARTTIMETABLE_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
