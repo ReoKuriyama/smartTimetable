@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user = current_user
+    redirect_to edit_user_path(@user) if params[:id].to_i != @user.id
   end
 
   def user_params
