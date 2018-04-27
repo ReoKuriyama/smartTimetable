@@ -24,7 +24,10 @@ class Scraping
     session.find("//*[@id='login']/section[5]/button").click
 
     # when login failed
-    return false if session.current_url != 'https://portal.keio.jp/koid/'
+    if session.current_url != 'https://portal.keio.jp/koid/'
+      session.driver.quit 
+      return false
+    end
 
     # click button
     session.find("//*[@id='b_menu']/li[2]").click
