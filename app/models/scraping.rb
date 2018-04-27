@@ -23,6 +23,9 @@ class Scraping
     # click login button
     session.find("//*[@id='login']/section[5]/button").click
 
+    # when login failed
+    return false if session.current_url != 'https://portal.keio.jp/koid/'
+
     # click button
     session.find("//*[@id='b_menu']/li[2]").click
     session.find("//*[@id='b_menu']/li[2]/ul/li[1]").click
@@ -35,8 +38,6 @@ class Scraping
     session.visit 'https://gslbs.adst.keio.ac.jp/student/schedule/View_Schedule.php'
 
     sleep(2)
-
-    session.save_screenshot 'screenshot.png'
 
     html = session.html
     doc = Nokogiri::HTML.parse(html)

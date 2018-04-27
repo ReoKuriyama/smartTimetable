@@ -5,10 +5,12 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      email = @user.email
       password = params[:user][:password]
-      Scraping.get_classes(email, password, current_user.id)
-      redirect_to root_path
+      if Scraping.get_classes(@user.email, password, current_user.id) == false
+        render :edit
+      else
+        redirect_to homes_path
+      end
     else
       render :edit
     end
@@ -18,6 +20,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user = current_user
+    redirect_to edit_user_path(@user) if params[:id].to_i != @user.id
   end
 
   def user_params
