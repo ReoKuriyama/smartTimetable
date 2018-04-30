@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
   before_action :redirect_to_scraping
-  before_action :set_current_user_timetable
   def index
+    set_current_user_timetable
     @arr_json = @timetables.to_json.html_safe
   end
 
