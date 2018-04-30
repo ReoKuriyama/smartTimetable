@@ -3,16 +3,22 @@ class HomesController < ApplicationController
   before_action :user_has_timetable?
   def index
     @timetables = {}
-    c_user_tt = current_user.school_timetables
-    @timetables[:spring] = c_user_tt.where(class_type: 0)
-    @timetables[:autumn] = c_user_tt.where(class_type: 1)
+    @timetables[:spring] = current_user_timetables.where(class_type: 0)
+    @timetables[:autumn] = current_user_timetables.where(class_type: 1)
     @arr_json = @timetables.to_json.html_safe
   end
 
   private
 
+  def current_user_timetables
+    current_user.school_timetables
+  end
+
+  def current_user_taking?
+    current_user.taking_classes.first
+  end
+
   def user_has_timetable?
-    timetables = current_user.taking_classes.first
-    redirect_to edit_user_path(current_user) if timetables.nil?
+    redirect_to edit_user_path(current_user) if current_user_taking?.nil?
   end
 end

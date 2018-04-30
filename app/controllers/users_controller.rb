@@ -1,6 +1,7 @@
 # UserScarpingInformation
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update]
+  before_action :user_check, only: %i[edit update]
   def edit; end
 
   def update
@@ -20,6 +21,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def user_check
     redirect_to edit_user_path(@user) if params[:id].to_i != @user.id
   end
 
