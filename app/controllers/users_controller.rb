@@ -1,4 +1,3 @@
-# UserScarpingInformation
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update]
   before_action :user_check, only: %i[edit update]
@@ -9,6 +8,7 @@ class UsersController < ApplicationController
       if Scraping.new(set_password).scrape_timetables == false
         render :edit
       else
+        sign_in(@user, bypass: true)
         redirect_to homes_path
       end
     else
@@ -33,6 +33,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :password)
   end
 end
