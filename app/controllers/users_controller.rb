@@ -2,7 +2,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update]
   before_action :user_check, only: %i[edit update]
-  attr_reader :user
   def edit; end
 
   def update
