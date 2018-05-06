@@ -8,6 +8,11 @@ class User < ApplicationRecord
   has_many :taking_classes
   has_many :school_timetables, through: :taking_classes
 
+  def set_scraping_info
+    { email: email,
+      c_user_id: id,
+      univ_name: 'keio' }
+  end
   # facebook
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
