@@ -5,10 +5,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      sign_in(@user, bypass: true)
       if Scraping.new(set_password).scrape_timetables == false
         render :edit
       else
-        sign_in(@user, bypass: true)
         redirect_to homes_path
       end
     else
