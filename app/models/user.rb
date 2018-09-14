@@ -28,6 +28,10 @@ class User < ApplicationRecord
      user
    end
 
+  def timetable?
+    taking_classes.first.present?
+  end
+
    private
 
    def self.dummy_email(auth)
